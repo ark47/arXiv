@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import './App.css';
+import Layout from './containers/Layout';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <h1>Arxiv.org</h1>
-      </div>
+        <Layout />
     );
   }
 }
