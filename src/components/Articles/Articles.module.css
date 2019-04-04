@@ -1,0 +1,10 @@
+.Articles {
+    width: 30vw;
+    height: 15vh;
+    background-color: teal;
+}
+
+.Articles h3 {
+    color: rgb(241, 216, 216);
+    text-align: left;
+}
