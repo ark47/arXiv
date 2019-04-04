@@ -4,7 +4,6 @@ import Articles from '../Articles/Articles';
 
 class Main extends Component {
     state = {
-        error: null,
         articles: []
     }
 
@@ -20,14 +19,9 @@ class Main extends Component {
                 fetchedArticles.push(entries[i]);
             }
             this.setState({ articles: fetchedArticles })
-            // console.log(test[0].getElementsByTagName('author'))
-            // console.log(test[0].getElementsByTagName('summary'))
-
         },
         (error) => {
-            this.setState({
-                error: true
-            });
+            console.log(error);
         })
     }
 
