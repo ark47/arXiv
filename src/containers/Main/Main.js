@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import styles from './Main.module.css';
-import Articles from '../../components/Articles/Articles';
+import classes from './Main.module.css';
+import Articles from '../Articles/Articles';
 
 class Main extends Component {
     state = {
@@ -34,7 +34,7 @@ class Main extends Component {
     render() {
 
         return (
-            <div className={styles.Main}>
+            <div className={classes.Main}>
                 <h1>arXiv.org</h1>
                 <Articles articles={this.state.articles} />
             </div>
