@@ -5,24 +5,24 @@ import Articles from '../../components/Articles/Articles';
 class Main extends Component {
     state = {
         error: null,
-        articles: null
+        articles: []
     }
 
     componentDidMount() {
         fetch('http://export.arxiv.org/api/query?search_query=ti:psychiatry+OR+ti:therapy+OR+cat:cs.LG+OR+ti:data%20science&sortBy=submittedDate&sortOrder=descending&max_results=9')
         .then(res => res.text())
         .then((result) => {
+            const fetchedArticles = [];
             let parser = new DOMParser();
             let doc = parser.parseFromString(result, "application/xml");
-            this.setState({
-                articles: doc.getElementsByTagName('entry')
-            })
-            // let test = this.state.articles.getElementsByTagName('entry')
-            // console.log(test[0].getElementsByTagName('id'))
-            // console.log(test[0].getElementsByTagName('title'))
+            let entries = doc.getElementsByTagName('entry');
+            for (let i = 0; i < entries.length; i++) {
+                fetchedArticles.push(entries[i]);
+            }
+            this.setState({ articles: fetchedArticles })
             // console.log(test[0].getElementsByTagName('author'))
             // console.log(test[0].getElementsByTagName('summary'))
-            // console.log(test);
+
         },
         (error) => {
             this.setState({
@@ -32,6 +32,7 @@ class Main extends Component {
     }
 
     render() {
+
         return (
             <div className={styles.Main}>
                 <h1>arXiv.org</h1>
