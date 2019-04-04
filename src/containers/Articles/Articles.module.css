@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: auto auto auto;
     margin: 0 auto;
+    width: 80%;
 }
 
 .Articles h3 {
@@ -12,8 +13,14 @@
 .article {
     margin: 0 auto;
     cursor: pointer;
+    padding: 5% 7%;
+    background-color: rgb(233, 231, 231);
+    border-radius: 5px;
+    margin: 5%;
+    transition: 0.3s;
 }
 
 .article:hover {
-    color: rgb(148, 17, 43);
+    color: crimson;
+    background-color: lightgray;
 }
