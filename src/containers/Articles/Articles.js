@@ -64,6 +64,7 @@ class Articles extends Component {
                     summary={this.state.summary}
                     show={this.state.showArticle}
                     close={this.articleCloser}
+                    clicker={this.props.authorClick}
                 />
             </div>
         )
