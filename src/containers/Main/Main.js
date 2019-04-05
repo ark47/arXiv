@@ -39,6 +39,7 @@ class Main extends Component {
             for (let i = 0; i < entries.length; i++) {
                 fetchedArticles.push(entries[i]);
             }
+            /* Add test here to verify state is being set/updated. */
             this.setState({ articles: fetchedArticles })
         },
         (error) => {
