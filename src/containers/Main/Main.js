@@ -20,7 +20,7 @@ class Main extends Component {
             
             3. +OR+ was used to search for articles that included any of the above search parameters, opposed to an all-or-nothing approach with +AND+.
 
-            4. The data is retrieved by submission data and in descending order from newest to oldest.
+            4. The data is retrieved by submission date and in descending order from newest to oldest.
             There's also a maximum number of retreived articles; set to nine. I chose this for a less crowded UI and easier-to-navigate UX.
 
             5. Because the retrieved data is in XML, I converted it to a string then used DOMParser() to convert into an HTML Document. I created a new variable(entries) that selected all <entry> tags from the HTML document as an object.
