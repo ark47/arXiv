@@ -76,3 +76,8 @@
 .author:hover {
     color: crimson;
 }
+
+.auth {
+    font-weight: 700;
+    color: rgb(134, 129, 129);
+}
