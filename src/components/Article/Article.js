@@ -23,7 +23,7 @@ const article = (props) => {
         auths.push(props.authors[i].innerHTML);
     }
     auths = auths.map(auth => {
-        return <li className={classes.author} key={auth}>{auth}</li>;
+        return <li onClick={() => props.clicker(auth)} className={classes.author} key={auth}>{auth}</li>;
     })
 
     let show = '-99';
@@ -34,9 +34,9 @@ const article = (props) => {
     }
 
     return (        
-        <div className={classes.Article} style={{zIndex: show}} >
+        <div onClick={props.close} className={classes.Article} style={{zIndex: show}} >
             <div className={classes.art} >
-            <div className={classes.close} onClick={props.close}></div>
+            <div className={classes.close}></div>
                 <h3>{props.title}</h3>
                 <p>{props.summary}</p>
                 <ul>
