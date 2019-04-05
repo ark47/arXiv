@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import classes from './Main.module.css';
 import Articles from '../Articles/Articles';
-import Author from '../../components/Author/Author';
 
 class Main extends Component {
     state = {
         articles: [],
-        authorArticles: []
+        header: 'arXiv.org'
     }
 
     /*______________________________________
@@ -49,7 +48,7 @@ class Main extends Component {
     }
 
     authorClickHandler = author => {
-        fetch(`http://export.arxiv.org/api/query?search_query=au:${author}&sortBy=submittedDate&sortOrder=descending&max_results=60`)
+        fetch(`http://export.arxiv.org/api/query?search_query=au:${author}&sortBy=submittedDate&sortOrder=descending&max_results=100`)
         .then(res => res.text())
         .then((result) => {
             const fetchedAuthorArticles = [];
@@ -72,14 +71,19 @@ class Main extends Component {
 
             const date = new Date();
             const dayInMilliseconds = Date.parse(date) - 2592000000;
-
+            let artPubDate;
+            
             for (let i = 0; i < entries.length; i++) {
-                if (Date.parse(entries[i].getElementsByTagName('published').innerHTML) > dayInMilliseconds) {
+                artPubDate = Date.parse(entries[i].getElementsByTagName('published')[0].textContent);
+                if (artPubDate > dayInMilliseconds) {
                     fetchedAuthorArticles.push(entries[i]);
                 }
             }
 
-            this.setState({ authorArticles: fetchedAuthorArticles })
+            this.setState({
+                articles: fetchedAuthorArticles,
+                header: author
+            });
         },
             (error) => {
                 console.log(error);
@@ -90,10 +94,9 @@ class Main extends Component {
 
         return (
             <div className={classes.Main}>
-                <h1>arXiv.org</h1>
-                {/* Passed articles state/property to the Articles component. */}
-                <Articles articles={this.state.articles} />
-                <Author authorArticles={this.state.authorArticles} authorClick={this.authorClickHandler} />
+                <h1>{this.state.header}</h1>
+                {/* Passed articles state/property and authorClickHandler to the Articles component. */}
+                <Articles articles={this.state.articles} authorClick={this.authorClickHandler} />
             </div>
         )
     }
