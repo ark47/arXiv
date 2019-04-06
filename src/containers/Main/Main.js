@@ -48,13 +48,15 @@ class Main extends Component {
     }
 
     authorClickHandler = author => {
-        fetch(`http://export.arxiv.org/api/query?search_query=au:${author}&sortBy=submittedDate&sortOrder=descending&max_results=100`)
+        author = author.replace(/\s/g, '+');
+        fetch(`http://export.arxiv.org/api/query?search_query=au:${author}`)
         .then(res => res.text())
         .then((result) => {
             const fetchedAuthorArticles = [];
             let parser = new DOMParser();
             let doc = parser.parseFromString(result, "application/xml");
             let entries = doc.getElementsByTagName('entry');
+            author = author.replace(/[++]/g, ' ');
 
             /*______________________________________
                 Check to see if an article is older than thirty days:
@@ -73,9 +75,9 @@ class Main extends Component {
             const dayInMilliseconds = Date.parse(date) - 2592000000;
             let artPubDate;
             
-            for (let i = 0; i < entries.length; i++) {
+            for (let i = 0; i < entries.length; i++) {;
                 artPubDate = Date.parse(entries[i].getElementsByTagName('published')[0].textContent);
-                if (artPubDate > dayInMilliseconds) {
+                if (artPubDate > dayInMilliseconds) {          
                     fetchedAuthorArticles.push(entries[i]);
                 }
             }
