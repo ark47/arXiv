@@ -29,7 +29,7 @@ class Main extends Component {
     */
 
     componentDidMount() {
-        fetch('http://export.arxiv.org/api/query?search_query=ti:psychiatry+OR+ti:therapy+OR+cat:cs.LG+OR+ti:data%20science&sortBy=submittedDate&sortOrder=descending&max_results=9')
+        fetch('https://export.arxiv.org/api/query?search_query=ti:psychiatry+OR+ti:therapy+OR+cat:cs.LG+OR+ti:data%20science&sortBy=submittedDate&sortOrder=descending&max_results=9')
         .then(res => res.text())
         .then((result) => {
             const fetchedArticles = [];
