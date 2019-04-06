@@ -49,7 +49,7 @@ class Main extends Component {
 
     authorClickHandler = author => {
         author = author.replace(/\s/g, '+');
-        fetch(`http://export.arxiv.org/api/query?search_query=au:${author}`)
+        fetch(`http://export.arxiv.org/api/query?search_query=au:${author}&max_results=100`)
         .then(res => res.text())
         .then((result) => {
             const fetchedAuthorArticles = [];
