@@ -15,7 +15,6 @@
     cursor: pointer;
     padding: 5% 7%;
     background-color: rgb(233, 231, 231);
-    border-radius: 5px;
     margin: 5%;
     transition: 0.3s;
 }

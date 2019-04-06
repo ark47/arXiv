@@ -97,6 +97,8 @@ class Main extends Component {
         return (
             <div className={classes.Main}>
                 <h1>{this.state.header}</h1>
+                <div className={classes.logo}></div>
+                <div className={classes.stripe}></div>
                 {/* Passed articles state/property and authorClickHandler to the Articles component. */}
                 <Articles articles={this.state.articles} authorClick={this.authorClickHandler} />
             </div>

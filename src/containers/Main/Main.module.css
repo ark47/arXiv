@@ -8,3 +8,27 @@
     left: 0;
     background-color: white;
 }
+
+.logo {
+    background-color: #222;
+    background-image: url(../../assets/images/cornell_logo.svg);
+    position: absolute;
+    top: 5%;
+    left: 0;
+    width: 160px;
+    height: 45px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 85%;
+    z-index: 1;
+    padding: 10px 20px;
+}
+
+.stripe {
+    background-color: crimson;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 2%;
+}
