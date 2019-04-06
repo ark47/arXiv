@@ -41,13 +41,18 @@ class Articles extends Component {
                 <div
                     className={classes.article}
                     key={art.getElementsByTagName('id')[0].innerHTML}
-                    onClick={() => this.setState({
+                    onClick={() => {
                         /* Test to verify state is being set/updated. */
+                        this.setState({
                         title: art.getElementsByTagName('title')[0].innerHTML + '.',
                         authors: art.getElementsByTagName('name'),
                         summary: art.getElementsByTagName('summary')[0].innerHTML,
                         showArticle: true
-                    })}
+                    })
+                        document.body.scrollTop = 0; // For Safari
+                        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                    }
+                    }
                 >
                     <h3>{art.getElementsByTagName('title')[0].innerHTML + '.'}</h3>
                 </div>
