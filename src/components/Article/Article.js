@@ -34,16 +34,14 @@ const article = (props) => {
     }
 
     return (        
-        <div onClick={props.close} className={classes.Article} style={{zIndex: show}} >
-            <div className={classes.art} >
-            <div className={classes.close}></div>
+        <div className={classes.Article} style={{zIndex: show}} >
+            <div onClick={props.close} className={classes.close}></div>
                 <h3>{props.title}</h3>
                 <p>{props.summary}</p>
-                <ul>
+                <ul onClick={props.close}>
                     <li className={classes.auth}>Authors</li>
                     {auths}
                 </ul>
-            </div>
         </div>
     )
 }
