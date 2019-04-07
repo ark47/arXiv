@@ -13,8 +13,10 @@ class Articles extends Component {
 
     articleCloser = () => {
         this.setState({
-            showArticle: false
-        })
+            showArticle: false,
+            title: '',
+            summary: ''
+        });
     }
     
     render() {
