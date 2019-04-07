@@ -59,6 +59,7 @@ class Main extends Component {
             author = author.replace(/[++]/g, ' ');
 
             /*______________________________________
+            
                 Check to see if an article is older than thirty days:
 
                 1. Establish today's date with the new Date() object.
@@ -74,10 +75,14 @@ class Main extends Component {
             const date = new Date();
             const dayInMilliseconds = Date.parse(date) - 2592000000;
             let artPubDate;
+            let artAuths;
             
             for (let i = 0; i < entries.length; i++) {;
+                artAuths = entries[i].getElementsByTagName('name');
+                artAuths = Array.from(artAuths).map((auth) => auth.textContent);
                 artPubDate = Date.parse(entries[i].getElementsByTagName('published')[0].textContent);
-                if (artPubDate > dayInMilliseconds) {          
+
+                if (artPubDate > dayInMilliseconds && artAuths.includes(author)) {          
                     fetchedAuthorArticles.push(entries[i]);
                 }
             }
