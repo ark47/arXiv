@@ -5,7 +5,7 @@ import Articles from '../Articles/Articles';
 class Main extends Component {
     state = {
         articles: [],
-        header: 'arXiv.org'
+        header: 'arXiv'
     }
 
     /*______________________________________

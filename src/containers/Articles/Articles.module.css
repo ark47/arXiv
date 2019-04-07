@@ -1,25 +1,62 @@
 .Articles {
     display: grid;
-    grid-template-columns: auto auto auto;
-    margin: 0 auto;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    margin: 10% auto;
     width: 80%;
 }
 
 .Articles h3 {
     text-align: left;
     font-size: 1rem;
+    margin: 0;
+    padding: 5% 7%;
+    transform: translateZ(12rem);
 }
 
 .article {
     margin: 0 auto;
     cursor: pointer;
-    padding: 5% 7%;
+    height: 20vh;
     background-color: rgb(233, 231, 231);
     margin: 5%;
     transition: 0.3s;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.article::after {
+    content: '';
+    width: 100%;
+    background-color: #222;
+    height: 10%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: 1s;
+    transform: translateZ(6rem);
+}
+
+.article::before {
+    content: '';
+    width: 100%;
+    background-color: #b31b1b;
+    height: 12%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s;
+    transform: translateZ(3rem);
+}
+
+.article:hover::before {
+    height: 100%;
+}
+
+.article:hover::after {
+    height: 98%;
 }
 
 .article:hover {
-    color: crimson;
+    color: white;
     background-color: lightgray;
 }
