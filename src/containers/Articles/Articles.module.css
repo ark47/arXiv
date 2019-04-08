@@ -14,8 +14,8 @@
 }
 
 .article {
-    margin: 0 auto;
     cursor: pointer;
+    margin: 0 auto;
     height: 20vh;
     background-color: rgb(233, 231, 231);
     margin: 5%;
