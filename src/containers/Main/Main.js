@@ -24,7 +24,7 @@ class Main extends Component {
 
         5. Because the retrieved data is in XML, I converted it to a string then used DOMParser() to convert into an HTML Document. I created a new variable(entries) that selected all <entry> tags from the HTML document as an object.
 
-        6. Because React wouldn't allow me to use .map() on an object(entries), I created a new empty array(fetched), and pushed each <entry> from entries into it. Then set the empty articles state equal to it.
+        6. Because React wouldn't allow me to use .map() on said object(entries), I created a new empty array(fetched), and pushed each <entry> from entries into it. Then set the empty articles state equal to it.
     __________________________________________
     */
 
@@ -49,7 +49,7 @@ class Main extends Component {
 
     authorClickHandler = author => {
         author = author.replace(/\s/g, '+');
-        fetch(`http://export.arxiv.org/api/query?search_query=au:${author}&max_results=100`)
+        fetch(`http://export.arxiv.org/api/query?search_query=au:${author}&sortBy=submittedDate&sortOrder=descending&max_results=100`)
         .then(res => res.text())
         .then((result) => {
             const fetchedAuthorArticles = [];
@@ -106,6 +106,7 @@ class Main extends Component {
                 <div className={classes.stripe}></div>
                 {/* Passed articles state/property and authorClickHandler to the Articles component. */}
                 <Articles articles={this.state.articles} authorClick={this.authorClickHandler} />
+                {/* <Authors articles={this.state.articles} authorClick={this.authorClickHandler} /> */}
             </div>
         )
     }
